@@ -20,10 +20,12 @@
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
+    <?php
+      
+    ?>
     <div class="wrapper">
 
       <header class="main-header">
-
         <!-- Logo -->
         <a href="/blogArticulo/principal" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
@@ -51,15 +53,28 @@
                 </a>
                 <ul class="dropdown-menu">
                   <!-- User image -->
-                  <li class="user-header">
-                    <p>{{auth()->user()->name}} <small>2019</small></p>
+                  <li class="user-header" style="height: 150px">
+                    
+                    <div class="card text-white bg-secondary mb-3"  style="background-color: #222d32!important;max-width: 540px;">
+                        <div class="row no-gutters">
+                          <div class="col-md-4" >
+                            <img src="{{asset('/imagenes/usuarios/' . auth()->user()->imagen)}}" class="card-img"  alt="...">
+                          </div>
+                          <div class="col-md-8">
+                            <div class="card-body">
+                              <h5 class="card-title">{{auth()->user()->name}}</h5>
+                              <p class="card-text">{{auth()->user()->apellido . ', ' . auth()->user()->nombre}}</p>
+                              <p class="card-text"><small class="text-muted"></small></p>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
                   </li>
 
                   <!-- Menu Footer-->
                   <li class="user-footer">
-
                     <div class="pull-right">
-                    <a href="{{url('/logout')}}" class="btn btn-default btn-flat">Cerrar sesión</a>
+                    <a href="{{url('/logout')}}" class="btn btn-warning btn-flat">Cerrar sesión</a>
                     </div>
                   </li>
                 </ul>
@@ -79,33 +94,59 @@
           <!-- sidebar menu: : style can be found in sidebar.less -->
           <ul class="sidebar-menu">
             <li class="header"></li>
+              <?php
+              $permisos = DB::table('Permiso as pm')
+                ->join('Perfil as pf', 'pm.Perfil_idPerfil', '=', 'pf.idPerfil')
+                ->join('users as usu', 'pf.idPerfil', '=', 'usu.Perfil_idPerfil')
+                ->select('pm.idPermiso', 'pm.nombre as nomPer')
+                ->where('usu.idUsers', '=', auth()->user()->idUsers)
+                ->get();
+              
+              $listPermisos = array();
+              foreach ($permisos as $per) {
+                array_push($listPermisos, $per->nomPer);
+              }
+              //if (in_array("gestionArticuloPersonal", $listPermisos)) {
+              //}
+              ?>
 
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-laptop"></i>
-                <span>Ver Articulos</span>
-                <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="/blogArticulo/principal"><i class="fa fa-globe"></i>Todos</a></li>
-                <li><a href="/blogArticulo/principal/buscarTipo/1"><i class="fa fa-newspaper-o"></i>Actualidad</a></li>
-                <li><a href="/blogArticulo/principal/buscarTipo/2"><i class="fa fa-film"></i>Espectaculo</a></li>
-                <li><a href="/blogArticulo/principal/buscarTipo/3"><i class="fa fa-users"></i>Sociales</a></li>
-                <li><a href="/blogArticulo/principal/buscarTipo/4"><i class="fa fa-futbol-o"></i>Deportes</a></li>
-              </ul>
-            </li>
-
-            <li class="treeview">
-              <a href="#">
-                <i class="fa fa-th"></i>
-                <span>Gestión</span>
-                 <i class="fa fa-angle-left pull-right"></i>
-              </a>
-              <ul class="treeview-menu">
-                <li><a href="{{url('/blogArticulo/articulo')}}"><i class="fa fa-newspaper-o"></i>Articulos</a></li>
-                <li><a href="{{url('/blogArticulo/usuario')}}"><i class="fa fa-users"></i>Usuarios</a></li>
-              </ul>
-            </li>
+              @if (in_array("lectura", $listPermisos))
+                <li class="treeview">
+                  <a href="#">
+                    <i class="fa fa-laptop"></i>
+                    <span>Ver Articulos</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    <li><a href="/blogArticulo/principal"><i class="fa fa-globe"></i>Todos</a></li>
+                    <li><a href="/blogArticulo/principal/buscarTipo/1"><i class="fa fa-newspaper-o"></i>Actualidad</a></li>
+                    <li><a href="/blogArticulo/principal/buscarTipo/2"><i class="fa fa-film"></i>Espectaculo</a></li>
+                    <li><a href="/blogArticulo/principal/buscarTipo/3"><i class="fa fa-users"></i>Sociales</a></li>
+                    <li><a href="/blogArticulo/principal/buscarTipo/4"><i class="fa fa-futbol-o"></i>Deportes</a></li>
+                  </ul>
+                </li>
+              @endif
+                <li class="treeview">
+                  <a href="#">
+                    <i class="fa fa-th"></i>
+                    <span>Gestión</span>
+                    <i class="fa fa-angle-left pull-right"></i>
+                  </a>
+                  <ul class="treeview-menu">
+                    
+                    @if (in_array("gestionArticuloPersonal", $listPermisos))
+                      <li><a href="{{url('/blogArticulo/articulo')}}"><i class="fa fa-newspaper-o"></i>Mis Articulos</a></li>
+                    @endif
+                    
+                    @if (in_array("gestionUsuarioPersonal", $listPermisos))
+                      <li><a href="{{url('/blogArticulo/perfil')}}"><i class="fa fa-male"></i>Perfil</a></li>
+                    @endif
+                    
+                    @if (in_array("gestionUsuarioTodos", $listPermisos))
+                      <li><a href="{{url('/blogArticulo/usuario')}}"><i class="fa fa-users"></i>Usuarios</a></li>
+                    @endif
+                  </ul>
+                </li>
             <li>
               <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>

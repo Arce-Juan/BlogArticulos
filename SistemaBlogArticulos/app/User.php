@@ -15,12 +15,13 @@ class User extends Authenticatable
     protected $primaryKey = 'idUsers';
     public $timestamps = false;
     protected $fillable = [
-        'nickName',
-        'contrasena',
+        'name',
+        'password',
         'imagen',
         'activo',
         'apellido',
         'nombre',
+        'email',
         'Perfil_idPerfil',
     ];
 

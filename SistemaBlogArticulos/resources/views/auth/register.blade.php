@@ -24,8 +24,36 @@
                             </div>
                         </div>
 
+                        <div class="form-group{{ $errors->has('apellido') ? ' has-error' : '' }}">
+                            <label for="apellido" class="col-md-4 control-label">Apellidos</label>
+
+                            <div class="col-md-6">
+                                <input id="apellido" type="text" class="form-control" name="apellido" value="{{ old('apellido') }}">
+
+                                @if ($errors->has('apellido'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('apellido') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+                        
+                        <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
+                            <label for="nombre" class="col-md-4 control-label">Nombres</label>
+
+                            <div class="col-md-6">
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}">
+
+                                @if ($errors->has('nombre'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('nombre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
-                            <label for="email" class="col-md-4 control-label">E-Mail</label>
+                            <label for="nombre" class="col-md-4 control-label">E-Mail</label>
 
                             <div class="col-md-6">
                                 <input id="email" type="email" class="form-control" name="email" value="{{ old('email') }}">
