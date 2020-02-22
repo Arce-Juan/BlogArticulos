@@ -44,7 +44,7 @@ CREATE TABLE `Articulo` (
 
 LOCK TABLES `Articulo` WRITE;
 /*!40000 ALTER TABLE `Articulo` DISABLE KEYS */;
-INSERT INTO `Articulo` VALUES (48,'Titulo 1','cabecera 1','cuerpo 1','actualidad.jpg',6,1),(49,'Titulo 2','cabecera 2','cuerpo 2','espectaculo2.jpg',6,2),(50,'Titulo 3','cabecera 3','cuerpo 3','social2.jpg',6,3),(51,'Titulo 4','cabecera 4','cuerpo 4','deporte3.jpg',6,4),(55,'chanchi mejorando ','chanchi mejorando chanchi mejorando ','chanchi mejorando chanchi mejorando chanchi mejorando ','espectaculo.jpg',6,1);
+INSERT INTO `Articulo` VALUES (48,'Titulo 1','cabecera 1','cuerpo 1','actualidad.jpg',6,1),(49,'Titulo 2','cabecera 2','cuerpo 2','espectaculo2.jpg',6,2),(50,'Titulo 3','cabecera 3','cuerpo 3','social2.jpg',6,3),(51,'Titulo 4','cabecera 4','cuerpo 4','deporte3.jpg',6,4),(55,'Sonic - La película: la Sega continúa','En los albores de los videojuegos infantiles, la criatura azul reaparece ahora en pantalla grande,','Sonic tuvo su primer videojuego en 1991 de la mano de Sega, quien lo adoptó como insignia para competir mano a mano con el éxito de la compañía rival, y quizás la figura más representativa de la historia de los 8 bits, Mario Bros. Desde entonces apareció en una veintena de juegos de las distintas evoluciones de la consola, además de varios cómics, dibujos animados','espectaculo.jpg',6,1);
 /*!40000 ALTER TABLE `Articulo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-21 18:25:05
+-- Dump completed on 2020-02-22 14:42:31

@@ -29,7 +29,7 @@ CREATE TABLE `Permiso` (
   PRIMARY KEY (`idPermiso`,`Perfil_idPerfil`),
   KEY `fk_Permiso_Perfil1_idx` (`Perfil_idPerfil`),
   CONSTRAINT `fk_Permiso_Perfil1` FOREIGN KEY (`Perfil_idPerfil`) REFERENCES `Perfil` (`idPerfil`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -38,7 +38,7 @@ CREATE TABLE `Permiso` (
 
 LOCK TABLES `Permiso` WRITE;
 /*!40000 ALTER TABLE `Permiso` DISABLE KEYS */;
-INSERT INTO `Permiso` VALUES (1,'lectura',4),(2,'escritura',4),(3,'gestionArticuloPersonal',4),(4,'gestionUsuarioPersonal',4),(5,'lectura',7),(6,'gestionUsuarioPersonal',7),(7,'lectura',5),(8,'escritura',5),(9,'gestionArticuloTodos',5),(10,'gestionUsuarioTodos',5),(11,'gestionArticuloPersonal',5),(12,'gestionUsuarioPersonal',5),(13,'lectura',6);
+INSERT INTO `Permiso` VALUES (1,'lectura',4),(2,'escritura',4),(3,'gestionArticuloPersonal',4),(4,'gestionUsuarioPersonal',4),(5,'lectura',7),(6,'gestionUsuarioPersonal',7),(7,'lectura',5),(8,'escritura',5),(9,'gestionArticuloTodos',5),(10,'gestionUsuarioTodos',5),(11,'gestionArticuloPersonal',5),(12,'gestionUsuarioPersonal',5),(13,'lectura',6),(14,'crearComentario',4),(15,'crearComentario',5),(16,'crearComentario',7);
 /*!40000 ALTER TABLE `Permiso` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -51,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-21 18:25:05
+-- Dump completed on 2020-02-22 14:42:30

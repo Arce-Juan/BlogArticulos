@@ -33,7 +33,7 @@ CREATE TABLE `Comentario` (
   KEY `fk_Comentario_Articulo1_idx` (`Articulo_idArticulo`),
   CONSTRAINT `fk_Comentario_Articulo1` FOREIGN KEY (`Articulo_idArticulo`) REFERENCES `Articulo` (`idArticulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Comentario_Ususario1` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=17 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -42,7 +42,7 @@ CREATE TABLE `Comentario` (
 
 LOCK TABLES `Comentario` WRITE;
 /*!40000 ALTER TABLE `Comentario` DISABLE KEYS */;
-INSERT INTO `Comentario` VALUES (2,'Comentario de articulo 1','2020-02-18 21:44:33',1,48),(3,'Comentario de articulo 1','2020-02-18 21:44:33',2,48),(4,'Comentario de articulo 2','2020-02-18 21:44:33',1,48),(5,'Comentario de articulo 2','2020-02-18 21:44:33',2,49);
+INSERT INTO `Comentario` VALUES (2,'Comentario de articulo 1','2020-02-18 21:44:33',1,48),(3,'Comentario de articulo 1','2020-02-18 21:44:33',2,48),(4,'Comentario de articulo 2','2020-02-18 21:44:33',1,48),(5,'Comentario de articulo 2','2020-02-18 21:44:33',2,49),(12,'hola','2020-02-22 13:48:01',6,51),(13,'soy admin','2020-02-22 13:48:42',16,51),(14,'el admin dice q esta peli va a estar buena','2020-02-22 14:25:37',16,55),(15,'yo la voy a ir a ver.','2020-02-22 14:26:57',6,55),(16,'quien me lleva?','2020-02-22 14:28:42',18,55);
 /*!40000 ALTER TABLE `Comentario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -55,4 +55,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-21 18:25:05
+-- Dump completed on 2020-02-22 14:42:31
