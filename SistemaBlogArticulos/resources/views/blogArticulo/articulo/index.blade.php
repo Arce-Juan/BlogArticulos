@@ -12,29 +12,27 @@
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
-                        <th>Id</th>
-                        <th>Titulo</th>
-                        <th>Cabecera</th>
-                        <th>Cuerpo</th>
-                        <th>Imagen</th>
-                        <th>Tipo</th>
-                        <th>Escritor</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Cabecera</th>
+                        <th scope="col" class="d-none d-lg-block">Cuerpo</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Escritor</th>
+                        <th scope="col">-</th>
                     </thead>
                    @foreach ($articulos as $art)
                     <tr>
-                        <td>{{ $art->idArticulo}}</td>
-                        <td>{{ $art->titulo}}</td>
-                        <td>{{ $art->cabecera}}</td>
-                        <td>{{ $art->cuerpo}}</td>
+                        <td style="width: 110px;">{{substr($art->titulo, 0, 25) . '..'}}</td>
+                        <td style="width: 110px;">{{substr($art->cabecera, 0, 25) . '..'}}</td>
+                        <td class="d-none d-lg-block">{{$art->cuerpo}}</td>
                         <td>
                             <img src="{{asset('imagenes/articulos/' . $art->imagen)}}" alt="{{$art->titulo}}" height="100px" width="100px" class="img-thumbnail">
-                            
                         </td>
                         <td>{{ $art->nombre}}</td>
                         <td>{{ $art->nickName}}</td>
-                        <td>
-                            <a href="{{URL::action('ArticuloController@edit',$art->idArticulo)}}"><button class="btn btn-info">Editar</button></a>
-                            <a href="" data-target="#modal-delete-{{$art->idArticulo}}" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                        <td style="width: 110px;">
+                            <a class="btn btn-info" href="{{URL::action('ArticuloController@edit',$art->idArticulo)}}" role="button"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-danger" href="" data-target="#modal-delete-{{$art->idArticulo}}" data-toggle="modal"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     @include('blogArticulo.articulo.modal')

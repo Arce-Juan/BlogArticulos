@@ -20,16 +20,20 @@
 
   </head>
   <body class="hold-transition skin-blue sidebar-mini">
-    <?php
-      
-    ?>
+
+      <style type="text/css">
+        .minh-100 {
+          height: 100vh;
+        }
+      </style>
+
     <div class="wrapper">
 
       <header class="main-header">
         <!-- Logo -->
         <a href="/blogArticulo/principal" class="logo">
           <!-- mini logo for sidebar mini 50x50 pixels -->
-          <span class="logo-mini"><b>ArGa</b>AG</span>
+          <span class="logo-mini"><b>B.A.</b></span>
           <!-- logo for regular state and mobile devices -->
           <span class="logo-lg"><b>Blog de Articulos</b></span>
         </a>
@@ -51,20 +55,20 @@
                   <small class="bg-red">Online</small>
                      <span class="hidden-xs"><?php echo e(auth()->user()->name); ?></span>
                 </a>
-                <ul class="dropdown-menu">
+                <ul class="dropdown-menu" style="width: 350px;">
                   <!-- User image -->
-                  <li class="user-header" style="height: 150px">
+                  <li class="user-header" style="height: 170px">
                     
                     <div class="card text-white bg-secondary mb-3"  style="background-color: #222d32!important;max-width: 540px;">
-                        <div class="row no-gutters">
-                          <div class="col-md-4" >
+                        <div class="row no-gutters ">
+                          <div class="col-md-4 "  >
                             <img src="<?php echo e(asset('/imagenes/usuarios/' . auth()->user()->imagen)); ?>" class="card-img"  alt="...">
                           </div>
                           <div class="col-md-8">
                             <div class="card-body">
                               <h5 class="card-title"><?php echo e(auth()->user()->name); ?></h5>
                               <p class="card-text"><?php echo e(auth()->user()->apellido . ', ' . auth()->user()->nombre); ?></p>
-                              <p class="card-text"><small class="text-muted"></small></p>
+                              <p class="card-text"><?php echo e(auth()->user()->email); ?><small class="text-muted"></small></p>
                             </div>
                           </div>
                         </div>
@@ -106,8 +110,6 @@
               foreach ($permisos as $per) {
                 array_push($listPermisos, $per->nomPer);
               }
-              //if (in_array("gestionArticuloPersonal", $listPermisos)) {
-              //}
               ?>
 
               <?php if(in_array("lectura", $listPermisos)): ?>

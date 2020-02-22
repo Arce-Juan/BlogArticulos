@@ -27,8 +27,10 @@ class ArticuloController extends Controller
             ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
             ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
             ->select('art.*', 'usu.name as nickName', 'ta.nombre')
+            //->select('art.titulo', ' SUBSTRING(,1,33)art.cabecera', 'art.cuerpo', 'art.imagen', 'art.Usuario_idUsuario', 'art.TipoArticulo_idTipoArticulo', 'usu.name', 'ta.nombre')
             ->where('titulo', 'LIKE', '%'.$query.'%')
             ->where('usu.activo', '=', '1')
+            ->where('usu.idUsers', '=', auth()->user()->idUsers )
             ->orderBy('idArticulo', 'asc')
             ->paginate(7);
             return view('blogArticulo.articulo.index', ["articulos"=>$articulos, "searchText"=>$query]);

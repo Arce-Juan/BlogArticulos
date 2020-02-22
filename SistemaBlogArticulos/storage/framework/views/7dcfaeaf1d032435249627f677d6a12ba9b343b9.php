@@ -11,29 +11,27 @@
             <div class="table-responsive">
                 <table class="table table-striped table-bordered table-condensed table-hover">
                     <thead>
-                        <th>Id</th>
-                        <th>Titulo</th>
-                        <th>Cabecera</th>
-                        <th>Cuerpo</th>
-                        <th>Imagen</th>
-                        <th>Tipo</th>
-                        <th>Escritor</th>
+                        <th scope="col">Titulo</th>
+                        <th scope="col">Cabecera</th>
+                        <th scope="col" class="d-none d-lg-block">Cuerpo</th>
+                        <th scope="col">Imagen</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Escritor</th>
+                        <th scope="col">-</th>
                     </thead>
                    <?php foreach($articulos as $art): ?>
                     <tr>
-                        <td><?php echo e($art->idArticulo); ?></td>
-                        <td><?php echo e($art->titulo); ?></td>
-                        <td><?php echo e($art->cabecera); ?></td>
-                        <td><?php echo e($art->cuerpo); ?></td>
+                        <td style="width: 110px;"><?php echo e(substr($art->titulo, 0, 25) . '..'); ?></td>
+                        <td style="width: 110px;"><?php echo e(substr($art->cabecera, 0, 25) . '..'); ?></td>
+                        <td class="d-none d-lg-block"><?php echo e($art->cuerpo); ?></td>
                         <td>
                             <img src="<?php echo e(asset('imagenes/articulos/' . $art->imagen)); ?>" alt="<?php echo e($art->titulo); ?>" height="100px" width="100px" class="img-thumbnail">
-                            
                         </td>
                         <td><?php echo e($art->nombre); ?></td>
                         <td><?php echo e($art->nickName); ?></td>
-                        <td>
-                            <a href="<?php echo e(URL::action('ArticuloController@edit',$art->idArticulo)); ?>"><button class="btn btn-info">Editar</button></a>
-                            <a href="" data-target="#modal-delete-<?php echo e($art->idArticulo); ?>" data-toggle="modal"><button class="btn btn-danger">Eliminar</button></a>
+                        <td style="width: 110px;">
+                            <a class="btn btn-info" href="<?php echo e(URL::action('ArticuloController@edit',$art->idArticulo)); ?>" role="button"><i class="fa fa-pencil"></i></a>
+                            <a class="btn btn-danger" href="" data-target="#modal-delete-<?php echo e($art->idArticulo); ?>" data-toggle="modal"><i class="fa fa-trash"></i></a>
                         </td>
                     </tr>
                     <?php echo $__env->make('blogArticulo.articulo.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
