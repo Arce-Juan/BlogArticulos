@@ -82,21 +82,14 @@ class PrincipalController extends Controller
     public function edit($id)
     {
         $articulo = Articulo::findOrFail($id);
-        /*
-        $articulo = DB::table('Articulo as art')
-            ->join('Usuario as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsuario')
-            ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
-            ->select('art.*', 'usu.nickName', 'ta.nombre')
-            ->where('art.idArticulo', '=', $id)
-            ->get();
-        */
+
         $autor = Usuario::findOrFail($articulo->Usuario_idUsuario);
 
         $tipoArticulo = TipoArticulo::findOrFail($articulo->TipoArticulo_idTipoArticulo);
         
         $comentarios = DB::table('Comentario as com')
-            ->join('Usuario as usu', 'com.Usuario_idUsuario', '=', 'usu.idUsuario')
-            ->select('com.*', 'usu.nickName')
+            ->join('users as usu', 'com.Usuario_idUsuario', '=', 'usu.idUsers')
+            ->select('com.*', 'usu.name')
             ->where('com.Articulo_idArticulo', '=', $id)
             ->get();
         return view("blogArticulo.principal.ver", ["articulo" => $articulo, "autor" => $autor ,"comentarios" => $comentarios, "tipoArticulo" => $tipoArticulo]);

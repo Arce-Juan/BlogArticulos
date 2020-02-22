@@ -4,7 +4,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 <div class="container">
-	<div class="row bg-primary">
+	<div class="row " style="background-color: #3c8dbc; ">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
         	<h1>{{ strtoupper($articulo->titulo) }}</h1>
 		</div>
@@ -29,7 +29,7 @@
 			Publicado: 2015-15-15
 		</div>
 	</div>
-	<div class="row">
+	<div class="row justify-content-center align-items-center">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<img src="{{asset('imagenes/articulos/' . $articulo->imagen)}}" alt="{{$articulo->titulo}}" class="img-thumbnail">
 		</div>
@@ -43,7 +43,7 @@
 	<hr style="color: #0056b2;" />
 	<br>
 
-	<div class="row bg-info">
+	<div class="row " style="background-color: #3c8dbc; ">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
 			<h5>Comentarios</h5>
 		</div>
@@ -57,7 +57,7 @@
 				</div>
 				<div class="col-md-8">
 					<div class="card-body">
-						<h5 class="card-title">{{$com->nickName}}</h5>
+						<h5 class="card-title">{{$com->name}}</h5>
 						<p class="card-text">{{$com->detalle}}</p>
 						<p class="card-text"><small class="text-muted">{{$com->fechaHora}}</small></p>
 					</div>
