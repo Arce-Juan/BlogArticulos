@@ -24,6 +24,8 @@ Route::get('/home', 'HomeController@index');
 
 Route::get('blogArticulo/principal/buscarTipo/{id}', 'PrincipalController@buscarTipo');
 
+Route::resource('blogArticulo/principal/guardarComentario', 'PrincipalController@guardarComentario');
+
 
 Route::get('blogArticulo/principal/buscarTipo', function () {
     return view('blogArticulo/principal/buscarTipo');

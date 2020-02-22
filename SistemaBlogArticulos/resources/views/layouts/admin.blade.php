@@ -110,8 +110,6 @@
               foreach ($permisos as $per) {
                 array_push($listPermisos, $per->nomPer);
               }
-              //if (in_array("gestionArticuloPersonal", $listPermisos)) {
-              //}
               ?>
 
               @if (in_array("lectura", $listPermisos))

@@ -3,9 +3,9 @@
 namespace blogArticulo\Http\Controllers;
 
 use Illuminate\Http\Request;
-
 use blogArticulo\Http\Requests;
 use blogArticulo\Articulo;
+use blogArticulo\Comentario;
 use blogArticulo\Usuario;
 use blogArticulo\TipoArticulo;
 use blogArticulo\Http\Requests\PrincipalFormRequest;
@@ -89,8 +89,9 @@ class PrincipalController extends Controller
         
         $comentarios = DB::table('Comentario as com')
             ->join('users as usu', 'com.Usuario_idUsuario', '=', 'usu.idUsers')
-            ->select('com.*', 'usu.name')
+            ->select('com.*', 'usu.name', 'usu.imagen')
             ->where('com.Articulo_idArticulo', '=', $id)
+            ->orderBy('com.idComentario', 'desc')
             ->get();
         return view("blogArticulo.principal.ver", ["articulo" => $articulo, "autor" => $autor ,"comentarios" => $comentarios, "tipoArticulo" => $tipoArticulo]);
     }
@@ -98,11 +99,25 @@ class PrincipalController extends Controller
     public function buscar($id){
         return view::make('blogArticulo.principal.ver');
     }
+
     public function show()
     {
         //return view("blogArticulo.articulo");
     }
 
+    public function guardarComentario(PrincipalFormRequest $request)
+    {
+        $fechaHoy = date("Y")."-".date("m")."-".date("d")." ".date("H").":".date("i").":".date("s");
+
+        $comentario = new Comentario();
+        $comentario->detalle = $request->get('comentario');
+        $comentario->fechaHora = $fechaHoy;
+        $comentario->Usuario_idUsuario = auth()->user()->idUsers;
+        $comentario->Articulo_idArticulo = $request->get('idArticulo');
+        $comentario->save();
+        return Redirect::to('blogArticulo/principal/' . $request->get('idArticulo') . '/edit');
+    }
+    
     /*
     public function showDirectReferal()
     {
