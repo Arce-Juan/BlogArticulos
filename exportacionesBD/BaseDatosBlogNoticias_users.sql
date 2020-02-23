@@ -39,7 +39,7 @@ CREATE TABLE `users` (
   UNIQUE KEY `users_nickname_unique` (`name`),
   KEY `users_perfil_idperfil_foreign` (`Perfil_idPerfil`),
   CONSTRAINT `users_perfil_idperfil_foreign` FOREIGN KEY (`Perfil_idPerfil`) REFERENCES `Perfil` (`idPerfil`)
-) ENGINE=InnoDB AUTO_INCREMENT=19 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -48,7 +48,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'arcej','123','usuario1.jpg',1,'Arce','Juan','arce.juan@mail.com',4,NULL,NULL,NULL),(2,'galvanj','123','usuario2.jpg',1,'Galvan','Jose','galvan.jose@mail.com',4,NULL,NULL,NULL),(4,'arcem','','usuario3.jpg',0,'','','mili@mail.com',5,NULL,'2020-02-19 00:57:46','2020-02-19 00:57:46'),(6,'mili','$2y$10$k1jr53fi.c9vr9kWPXJITulHVXjupwCH0rv.sCLY3QGibrRk/GKa2','usuario4.jpg',1,'vazques','mili','mili@mail.com',4,'AXlKDTKkZ8nIbGX1acZwboLJ13SnLqFx5FvrRU3h4oMBaqrSOBqGrhRTCNdB',NULL,NULL),(7,'Invitado','$2y$10$tsvPNoC6FXZCQV80SHDVzez7G3hO.Nd1ve08IUFT1YDr2hjeDqxO6','default.png',1,'invitado','invitado','invitado@invitado.com',6,'DkejGupFgIUTsRAwtxg8ulMhY8AIxQ30gVOn5bA5lVuRPKMVoHlQrgaiGFff',NULL,NULL),(16,'admin','$2y$10$MNIExwchYZRQZlpZ/AZZ0eL2j2h45RNQte/XjuDUfn/W2djGvFTai','default.png',1,'admin','admin','admin@admin.com',5,'F2UYLqOQ32mF4OBEVBwkTae6d2IqGVfAoEZ84Ew74D5kcGPohWtyOlfTITiE',NULL,NULL),(18,'chanchi','$2y$10$WKYmz/SBImSK38U0dRXNK.MAp4NczA69R6ZQbg4e1ghbpKuJLtoG.','usuario6.jpg',1,'arce','chanchon','chanchi@chanchi.com',7,'QOjxa2DZ6jtmp385WrA0z9MtZZc2o8teVu2tHY4CGfj0pBxjczwD5rGT2fb4',NULL,NULL);
+INSERT INTO `users` VALUES (6,'mili','$2y$10$GVcVQIUJiM99faVA1J9IX.jW3go.7mqbbmzMNI8yU4mApfF/1ShEK','usuario4.jpg',1,'vazques','mili','soyMili@mail.com',4,'O9kb8swFjEaeqmthKYyFDg50SzbGptXoHLoW0ZMUVglSJUwWtNUu4l73KT7i',NULL,NULL),(7,'Invitado','$2y$10$tsvPNoC6FXZCQV80SHDVzez7G3hO.Nd1ve08IUFT1YDr2hjeDqxO6','default.png',1,'invitado','invitado','invitado@invitado.com',6,'WJRjB0gTGHdmwg5QUJZWn5e7wThGSMDpmuBbcvXRsmYyyNbpA7QRpgbTqR19',NULL,NULL),(16,'admin','$2y$10$MNIExwchYZRQZlpZ/AZZ0eL2j2h45RNQte/XjuDUfn/W2djGvFTai','default.png',1,'admin','admin','admin@admin.com',5,'vbK2Rjlrkxblm1ptINgFLLiQhUrF1sgAy6YjbmOc5vwSJAV9V0blxUCJ9aNq',NULL,NULL),(18,'chanchi','$2y$10$WKYmz/SBImSK38U0dRXNK.MAp4NczA69R6ZQbg4e1ghbpKuJLtoG.','usuario6.jpg',1,'arce','chanchon','chanchi@chanchi.com',7,'hcATXUJeicrgUTdYQgi9quvETnqqSCDA4nmtcRuDl8ZGOG37Kpw5er1cRStd',NULL,NULL),(19,'arcej','$2y$10$4InxK57FM5lWzAQyMZ1nb.dMpqtsl2uB8AWYE1OBegKhYeaniGmzW','default.png',1,'arce','juan','juan@juan.com',4,'nRwygfxVX26mI0K6HtBs3xlyFqw8t6dVAZrsrUdXZSWbrzDqBXgkJdOvF9Mh',NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -61,4 +61,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 14:42:30
+-- Dump completed on 2020-02-23  0:59:37

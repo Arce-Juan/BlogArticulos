@@ -30,12 +30,14 @@ CREATE TABLE `Articulo` (
   `imagen` varchar(800) DEFAULT NULL,
   `Usuario_idUsuario` int(11) NOT NULL,
   `TipoArticulo_idTipoArticulo` int(11) NOT NULL,
+  `activo` int(1) NOT NULL,
+  `fechaPublicacion` datetime NOT NULL,
   PRIMARY KEY (`idArticulo`,`Usuario_idUsuario`,`TipoArticulo_idTipoArticulo`),
   KEY `fk_Articulo_Ususario_idx` (`Usuario_idUsuario`),
   KEY `fk_Articulo_TipoArticulo1_idx` (`TipoArticulo_idTipoArticulo`),
   CONSTRAINT `fk_Articulo_TipoArticulo1` FOREIGN KEY (`TipoArticulo_idTipoArticulo`) REFERENCES `TipoArticulo` (`idTipoArticulo`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `fk_Articulo_Ususario` FOREIGN KEY (`Usuario_idUsuario`) REFERENCES `users` (`idUsers`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=56 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=57 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -44,7 +46,7 @@ CREATE TABLE `Articulo` (
 
 LOCK TABLES `Articulo` WRITE;
 /*!40000 ALTER TABLE `Articulo` DISABLE KEYS */;
-INSERT INTO `Articulo` VALUES (48,'Titulo 1','cabecera 1','cuerpo 1','actualidad.jpg',6,1),(49,'Titulo 2','cabecera 2','cuerpo 2','espectaculo2.jpg',6,2),(50,'Titulo 3','cabecera 3','cuerpo 3','social2.jpg',6,3),(51,'Titulo 4','cabecera 4','cuerpo 4','deporte3.jpg',6,4),(55,'Sonic - La película: la Sega continúa','En los albores de los videojuegos infantiles, la criatura azul reaparece ahora en pantalla grande,','Sonic tuvo su primer videojuego en 1991 de la mano de Sega, quien lo adoptó como insignia para competir mano a mano con el éxito de la compañía rival, y quizás la figura más representativa de la historia de los 8 bits, Mario Bros. Desde entonces apareció en una veintena de juegos de las distintas evoluciones de la consola, además de varios cómics, dibujos animados','espectaculo.jpg',6,1);
+INSERT INTO `Articulo` VALUES (48,'Titulo 1','cabecera 1','cuerpo 1','actualidad.jpg',6,1,1,'2020-02-21 19:55:32'),(49,'Titulo 2','cabecera 2','cuerpo 2','espectaculo2.jpg',6,2,1,'2020-02-22 19:55:04'),(50,'Titulo 3','cabecera 3','cuerpo 3','social2.jpg',19,3,1,'2020-02-23 19:55:04'),(51,'Atlético retoma el triunfo ante Lanús','El encuentro fue programado para las 21.50. Dirigirá Fernando Espinoza. Televisará TNT Sports','En Atlético, la cuestión pasa por cortar rachas. Una, la de comenzar a revertir el historial desfavorable contra Lanús (tres empates e igual número de derrotas); otra, interrumpir la serie sin victorias que comprende siete partidos en la Superliga. Los equipos estarán frente a frente desde las 21','deporte2.jpg',16,4,1,'2020-02-22 19:55:04'),(55,'Sonic - La película: la Sega continúa','En los albores de los videojuegos infantiles, la criatura azul reaparece ahora en pantalla grande,','Sonic tuvo su primer videojuego en 1991 de la mano de Sega, quien lo adoptó como insignia para competir mano a mano con el éxito de la compañía rival, y quizás la figura más representativa de la historia de los 8 bits, Mario Bros. Desde entonces apareció en una veintena de juegos de las distintas evoluciones de la consola, además de varios cómics, dibujos animados','espectaculo.jpg',6,2,1,'2020-02-24 19:55:04'),(56,'nuevo articulo','este es un nuevo articulo','este paree ser  un nuevo articulo para probar como va tdo','social.jpg',19,3,1,'2020-02-22 20:00:27');
 /*!40000 ALTER TABLE `Articulo` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-02-22 14:42:31
+-- Dump completed on 2020-02-23  0:59:37
