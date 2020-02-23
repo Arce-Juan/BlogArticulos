@@ -136,7 +136,7 @@
                   </a>
                   <ul class="treeview-menu">
                     
-                    <?php if(in_array("gestionArticuloPersonal", $listPermisos)): ?>
+                    <?php if(in_array("gestionArticuloPersonal", $listPermisos) or in_array("gestionArticuloTodos", $listPermisos)): ?>
                       <li><a href="<?php echo e(url('/blogArticulo/articulo')); ?>"><i class="fa fa-newspaper-o"></i>Mis Articulos</a></li>
                     <?php endif; ?>
                     

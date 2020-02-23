@@ -136,7 +136,7 @@
                   </a>
                   <ul class="treeview-menu">
                     
-                    @if (in_array("gestionArticuloPersonal", $listPermisos))
+                    @if (in_array("gestionArticuloPersonal", $listPermisos) or in_array("gestionArticuloTodos", $listPermisos))
                       <li><a href="{{url('/blogArticulo/articulo')}}"><i class="fa fa-newspaper-o"></i>Mis Articulos</a></li>
                     @endif
                     

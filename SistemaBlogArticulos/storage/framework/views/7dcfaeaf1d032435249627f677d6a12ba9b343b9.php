@@ -5,7 +5,6 @@
             <?php echo $__env->make('blogArticulo.articulo.search', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
@@ -30,8 +29,12 @@
                         <td><?php echo e($art->nombre); ?></td>
                         <td><?php echo e($art->nickName); ?></td>
                         <td style="width: 110px;">
-                            <a class="btn btn-info" href="<?php echo e(URL::action('ArticuloController@edit',$art->idArticulo)); ?>" role="button"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-danger" href="" data-target="#modal-delete-<?php echo e($art->idArticulo); ?>" data-toggle="modal"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-info" href="<?php echo e(URL::action('ArticuloController@edit',$art->idArticulo)); ?>" role="button" title="Editar"><i class="fa fa-pencil"></i></a>
+                            <?php if($art->activo == 1): ?>
+                                <a class="btn btn-danger" href="" data-target="#modal-delete-<?php echo e($art->idArticulo); ?>" data-toggle="modal" title="Eliminar"><i class="fa fa-trash"></i></a>
+                            <?php else: ?>
+                                <a class="btn btn-secondary" href="" data-target="#modal-restore-<?php echo e($art->idArticulo); ?>" data-toggle="modal" title="Restablecer"><i class="fa fa-upload"></i></a>
+                            <?php endif; ?>
                         </td>
                     </tr>
                     <?php echo $__env->make('blogArticulo.articulo.modal', array_except(get_defined_vars(), array('__data', '__path')))->render(); ?>

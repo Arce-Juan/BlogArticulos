@@ -6,7 +6,6 @@
             @include('blogArticulo.articulo.search')
         </div>
     </div>
-
     <div class="row">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             <div class="table-responsive">
@@ -31,8 +30,12 @@
                         <td>{{ $art->nombre}}</td>
                         <td>{{ $art->nickName}}</td>
                         <td style="width: 110px;">
-                            <a class="btn btn-info" href="{{URL::action('ArticuloController@edit',$art->idArticulo)}}" role="button"><i class="fa fa-pencil"></i></a>
-                            <a class="btn btn-danger" href="" data-target="#modal-delete-{{$art->idArticulo}}" data-toggle="modal"><i class="fa fa-trash"></i></a>
+                            <a class="btn btn-info" href="{{URL::action('ArticuloController@edit',$art->idArticulo)}}" role="button" title="Editar"><i class="fa fa-pencil"></i></a>
+                            @if($art->activo == 1)
+                                <a class="btn btn-danger" href="" data-target="#modal-delete-{{$art->idArticulo}}" data-toggle="modal" title="Eliminar"><i class="fa fa-trash"></i></a>
+                            @else
+                                <a class="btn btn-secondary" href="" data-target="#modal-restore-{{$art->idArticulo}}" data-toggle="modal" title="Restablecer"><i class="fa fa-upload"></i></a>
+                            @endif
                         </td>
                     </tr>
                     @include('blogArticulo.articulo.modal')

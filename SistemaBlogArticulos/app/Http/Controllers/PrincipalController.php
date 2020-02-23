@@ -32,17 +32,13 @@ class PrincipalController extends Controller
         }
         if ($request)
         {
-            //$query = trim($request->get('searchText'));
-            
             $articulos = DB::table('Articulo as art')
                 ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
                 ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
                 ->select('art.*', 'usu.name', 'ta.nombre')
-                //->where('titulo', 'LIKE', '%'.$query.'%')
-                ->where('usu.activo', '=', '1')
+                ->where('art.activo', '=', '1')
                 ->orderBy('idArticulo', 'asc')
                 ->paginate(7);
-            //return view('blogArticulo.principal.index', ["articulos"=>$articulos, "searchText"=>$query]);
             return view('blogArticulo.principal.index', ["articulos"=>$articulos]);
         }
     }
@@ -55,8 +51,7 @@ class PrincipalController extends Controller
             ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
             ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
             ->select('art.*', 'usu.name', 'ta.nombre')
-            //->where('titulo', 'LIKE', '%'.$query.'%')
-            ->where('usu.activo', '=', '1')
+            ->where('art.activo', '=', '1')
             ->orderBy('idArticulo', 'asc')
             ->paginate(7);
         return view('blogArticulo.principal', ["articulos"=>$articulos]);
@@ -71,8 +66,8 @@ class PrincipalController extends Controller
                 ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
                 ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
                 ->select('art.*', 'usu.name', 'ta.nombre')
-                //->where('titulo', 'LIKE', '%'.$query.'%')
                 ->where('ta.idTipoArticulo', '=', $id)
+                ->where('art.activo', '=', '1')
                 ->orderBy('idArticulo', 'asc')
                 ->paginate(7);
             return view('blogArticulo.principal.index', ["articulos"=>$articulos]);

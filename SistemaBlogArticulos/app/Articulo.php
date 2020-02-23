@@ -16,6 +16,8 @@ class Articulo extends Model
         'imagen',
         'TipoArticulo_idTipoArticulo',
         'Usuario_idUsuario',
+        'activo',
+        'fechaPublicacion',
     ];
 
     protected $guarded = [

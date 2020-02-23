@@ -22,6 +22,8 @@ Route::resource('blogArticulo/principal', 'PrincipalController');
 
 Route::get('/home', 'HomeController@index');
 
+Route::get('blogArticulo/articulo/restore/{id}', 'ArticuloController@restore');
+
 Route::get('blogArticulo/principal/buscarTipo/{id}', 'PrincipalController@buscarTipo');
 
 Route::resource('blogArticulo/principal/guardarComentario', 'PrincipalController@guardarComentario');
