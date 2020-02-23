@@ -36,3 +36,6 @@ Route::get('blogArticulo/principal/buscarTipo', function () {
 Route::get('blogArticulo/principal/invitado', function () {
     return view('blogArticulo/principal/invitado');
 });
+
+Route::resource('blogArticulo/usuario', 'UsuarioController');
+Route::resource('blogArticulo/verPerfil', 'UsuarioController@verPerfil');

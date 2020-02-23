@@ -141,7 +141,7 @@
                     @endif
                     
                     @if (in_array("gestionUsuarioPersonal", $listPermisos))
-                      <li><a href="{{url('/blogArticulo/perfil')}}"><i class="fa fa-male"></i>Perfil</a></li>
+                      <li><a href="{{url('/blogArticulo/verPerfil')}}"><i class="fa fa-male"></i>Mi Perfil</a></li>
                     @endif
                     
                     @if (in_array("gestionUsuarioTodos", $listPermisos))

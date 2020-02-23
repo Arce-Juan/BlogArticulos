@@ -141,7 +141,7 @@
                     <?php endif; ?>
                     
                     <?php if(in_array("gestionUsuarioPersonal", $listPermisos)): ?>
-                      <li><a href="<?php echo e(url('/blogArticulo/perfil')); ?>"><i class="fa fa-male"></i>Perfil</a></li>
+                      <li><a href="<?php echo e(url('/blogArticulo/verPerfil')); ?>"><i class="fa fa-male"></i>Mi Perfil</a></li>
                     <?php endif; ?>
                     
                     <?php if(in_array("gestionUsuarioTodos", $listPermisos)): ?>
