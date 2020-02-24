@@ -41,3 +41,5 @@ Route::resource('blogArticulo/usuario', 'UsuarioController');
 Route::resource('blogArticulo/verPerfil', 'UsuarioController@verPerfil');
 
 Route::resource('blogArticulo/usuario/editarUsuario', 'UsuarioController@editarUsuario');
+
+Route::resource('blogArticulo/principal/buscarPorFiltro', 'PrincipalController@buscarPorFiltro');

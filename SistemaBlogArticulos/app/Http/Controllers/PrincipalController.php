@@ -32,6 +32,12 @@ class PrincipalController extends Controller
         }
         if ($request)
         {
+            $autores = DB::table('users as usu')
+                ->join('Articulo as art', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
+                ->select('usu.*')
+                ->orderBy('usu.name', 'asc')
+                ->distinct()
+                ->get();
             $articulos = DB::table('Articulo as art')
                 ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
                 ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
@@ -40,7 +46,7 @@ class PrincipalController extends Controller
                 ->orderBy('idArticulo', 'asc')
                 ->get();
                 //->paginate(7);
-            return view('blogArticulo.principal.index', ["articulos"=>$articulos]);
+            return view('blogArticulo.principal.index', ["articulos"=>$articulos, "autores"=>$autores]);
         }
     }
 
@@ -61,18 +67,26 @@ class PrincipalController extends Controller
 
     public function buscarTipo($id)
     {
-        //if($id)
-        //{
-            $articulos = DB::table('Articulo as art')
-                ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
-                ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
-                ->select('art.*', 'usu.name', 'ta.nombre')
-                ->where('ta.idTipoArticulo', '=', $id)
-                ->where('art.activo', '=', '1')
-                ->orderBy('idArticulo', 'asc')
-                ->paginate(7);
-            return view('blogArticulo.principal.index', ["articulos"=>$articulos]);
-        //}
+        $autores = DB::table('users as usu')
+            ->join('Articulo as art', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
+            ->select('usu.*')
+            ->orderBy('usu.name', 'asc')
+            ->distinct()
+            ->get();
+        
+        $tipoArticulo = DB::table('TipoArticulo as tipoArt')
+            ->where('tipoArt.idTipoArticulo', '=', $id)
+            ->first();
+
+        $articulos = DB::table('Articulo as art')
+            ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
+            ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
+            ->select('art.*', 'usu.name', 'ta.nombre')
+            ->where('ta.idTipoArticulo', '=', $id)
+            ->where('art.activo', '=', '1')
+            ->orderBy('idArticulo', 'asc')
+            ->paginate(7);
+        return view('blogArticulo.principal.index', ["articulos"=>$articulos, "tipoArticulo"=>$tipoArticulo, "autores"=>$autores]);
     }
 
     public function edit($id)
@@ -113,13 +127,29 @@ class PrincipalController extends Controller
         $comentario->save();
         return Redirect::to('blogArticulo/principal/' . $request->get('idArticulo') . '/edit');
     }
-    
-    /*
-    public function showDirectReferal()
+
+    public function buscarPorFiltro(Request $request)
     {
-        return view('blogArticulo/principal/buscar');
-        //}
-        //else return redirect('errors/404');
+        $autores = DB::table('users as usu')
+        ->join('Articulo as art', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
+        ->select('usu.*')
+        ->orderBy('usu.name', 'asc')
+        ->distinct()
+        ->get();
+
+        $articulos = DB::table('Articulo as art')
+            ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
+            ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
+            ->leftJoin('Comentario as com', 'art.idArticulo', '=', 'com.Articulo_idArticulo')
+            ->select('art.*', 'usu.name', 'ta.nombre', DB::raw("count(com.idComentario) as cantidadComentarios"))
+            ->where('art.activo', '=', '1')
+            ->where('usu.name', 'LIKE', '%'. $request->get('nSelectAutor') .'%')
+            ->groupBy('art.idArticulo', 'usu.name', 'ta.nombre')
+            ->orderBy('cantidadComentarios', $request->get('nSelectComentados'))
+            ->orderBy('art.fechaPublicacion', $request->get('nSelectFecha'))
+            //->orderBy('art.idArticulo', 'desc')
+            ->paginate(7);
+        return view('blogArticulo.principal.index', ["articulos"=>$articulos, "autores"=>$autores]);
     }
-    */
+
 }

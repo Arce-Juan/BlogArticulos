@@ -86,7 +86,6 @@ class UsuarioController extends Controller
 
     public function editarUsuario(UsuarioFormRequest $request)
     {
-        print_r('asdfasdfasdf');
         $request->get('nHiddenIdUsuario');
         $user = User::findOrFail($request->get('nHiddenIdUsuario'));
         $user->activo = $request->get('nSelectEstado');
