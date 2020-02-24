@@ -29,14 +29,19 @@ class UsuarioController extends Controller
         
         if ($request)
         {
-            $articulos = DB::table('Articulo as art')
-                ->join('users as usu', 'art.Usuario_idUsuario', '=', 'usu.idUsers')
-                ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
-                ->select('art.*', 'usu.name', 'ta.nombre')
-                ->where('art.activo', '=', '1')
-                ->orderBy('idArticulo', 'asc')
+            $query = trim($request->get('searchText'));
+            $usuarios = DB::table('users as usu')
+                ->join('Perfil as per', 'usu.Perfil_idPerfil', '=', 'per.idPerfil')
+                ->select('usu.idUsers', 'usu.name as nickName', 'usu.imagen', 'usu.activo', 'usu.apellido', 'usu.nombre as usu_nombre', 'usu.email', 'per.idPerfil', 'per.nombre as perfil_Nombre')
+                ->where('usu.name', 'LIKE', '%'.$query.'%')
+                ->orWhere('usu.apellido', 'LIKE', '%'.$query.'%')
+                ->orWhere('usu.nombre', 'LIKE', '%'.$query.'%')
+                ->orderBy('usu.name', 'asc')
                 ->paginate(7);
-            return view('blogArticulo.usuario.index', ["articulos"=>$articulos]);
+
+            $perfiles = DB::table('Perfil')->get();
+
+            return view('blogArticulo.usuario.index', ["usuarios"=>$usuarios, "perfiles"=>$perfiles, "searchText"=>$query]);
         }
     }
 
@@ -75,14 +80,18 @@ class UsuarioController extends Controller
             $file->move(public_path().'imagenes/usuario/', $file->getClientOriginalName());
             $user->imagen = $file->getClientOriginalName();
         }
-        /*
-        if (Input::hasFile('imagen')) {
-            $file = Input::file('imagen');
-            $file->move(public_path().'imagenes/articulos/', $file->getClientOriginalName());
-            $articulo->imagen = $file->getClientOriginalName();
-        }
-        */
         $user->update();
         return Redirect::to('blogArticulo/principal');
+    }
+
+    public function editarUsuario(UsuarioFormRequest $request)
+    {
+        print_r('asdfasdfasdf');
+        $request->get('nHiddenIdUsuario');
+        $user = User::findOrFail($request->get('nHiddenIdUsuario'));
+        $user->activo = $request->get('nSelectEstado');
+        $user->Perfil_idPerfil = $request->get('nSelectPerfil');
+        $user->update();
+        return Redirect::to('blogArticulo/usuario');
     }
 }

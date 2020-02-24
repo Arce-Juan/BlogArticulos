@@ -24,7 +24,7 @@ class UsuarioFormRequest extends Request
     public function rules()
     {
         return [
-            'email' => 'required | max:225',
+            'email' => 'max:225',
             'password' => 'min:6|max:100',
             'imagen' => 'mimes: jpg,jpeg,bmp,png',
         ];

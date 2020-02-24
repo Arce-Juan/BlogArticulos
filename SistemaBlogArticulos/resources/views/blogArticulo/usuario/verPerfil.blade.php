@@ -150,7 +150,7 @@
                     </div>
 
                     <div class="form-group">
-                        <div class="col-md-6 col-md-offset-4">
+                        <div class="col d-flex justify-content-center">
                             <button type="submit" class="btn btn-primary">
                                 <i class="fa fa-btn fa-user"></i>  Actualizar
                             </button>
