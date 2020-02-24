@@ -44,21 +44,21 @@
                     
                     
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="name" class="col-md-3 control-label">Usuario</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" class="form-control" value="{{auth()->user()->name}}" disabled readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="nombre" class="col-md-3 control-label">Perfil</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" class="form-control" value="{{$perfil->nombre}}" disabled readonly>
                                     </div>
                                 </div>
@@ -67,21 +67,21 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="apellido" class="col-md-3 control-label">Apellidos</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" class="form-control" value="{{auth()->user()->apellido}}" disabled readonly>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="nombre" class="col-md-3 control-label">Nombres</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input type="text" class="form-control" value="{{auth()->user()->nombre}}" disabled readonly>
                                     </div>
                                 </div>
@@ -90,36 +90,36 @@
                     </div>
                     
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
-                                    <label for="apellido" class="col-md-3 control-label">E-Mail</label>
-                                    <div class="col-md-6">
+                                    <label for="apellido" class="col-md-3 control-label">Mail</label>
+                                    <div class="col-md-8">
                                         <input id="email" type="email" class="form-control" name="email" value="{{auth()->user()->email}}">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                         </div>
                     </div>
                     
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="apellido" class="col-md-3 control-label">Contraseña</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                         <input id="password" type="password" class="form-control" name="password">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="nombre" class="col-md-3 control-label">Confirmar Contraseña</label>
-                                    <div class="col-md-6">
+                                    <div class="col-md-8">
                                             <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
                                     </div>
                                 </div>
@@ -128,7 +128,7 @@
                     </div>
 
                     <div class="row">
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <label for="imagen" class="col-md-3 control-label">Imagen</label>
@@ -138,7 +138,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="col">
+                        <div class="col-12 col-md-6">
                             <div class="form-group">
                                 <div class="row">
                                     <div id="imagePreview">
