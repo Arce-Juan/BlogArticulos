@@ -33,14 +33,16 @@
 	</div>
 	<div class="row">
 		<div class="col-lg-6 col-md-6 col-sm-6 col-xs-12">
-			Publicado: 2015-15-15
+			Publicado: <b>{{$articulo->fechaPublicacion}}</b>
 		</div>
 	</div>
+	<br>
 	<div class="row">
 		<div class="col-12 justify-content-center img-center">
 			<img src="{{asset('imagenes/articulos/' . $articulo->imagen)}}" alt="{{$articulo->titulo}}" class="img-fluid">
 		</div>
 	</div>
+	<br>
 	<div class="row">
 		<div class="col-12">
 			{{$articulo->cuerpo}}
@@ -99,9 +101,7 @@
 							<p>Para poder comentar debes <a href="/logout" >Ingresar / Registrarte</a></p>
 						</div>
 					@endif
-
 				</div>
-				
 			</div>
 		</div>
 	</div>

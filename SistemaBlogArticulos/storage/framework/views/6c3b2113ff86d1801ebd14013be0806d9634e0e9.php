@@ -128,6 +128,7 @@
                   </ul>
                 </li>
               <?php endif; ?>
+              <?php if(auth()->user()->name != 'Invitado'): ?>
                 <li class="treeview">
                   <a href="#">
                     <i class="fa fa-th"></i>
@@ -135,7 +136,6 @@
                     <i class="fa fa-angle-left pull-right"></i>
                   </a>
                   <ul class="treeview-menu">
-                    
                     <?php if(in_array("gestionArticuloPersonal", $listPermisos) or in_array("gestionArticuloTodos", $listPermisos)): ?>
                       <li><a href="<?php echo e(url('/blogArticulo/articulo')); ?>"><i class="fa fa-newspaper-o"></i>Mis Articulos</a></li>
                     <?php endif; ?>
@@ -149,6 +149,7 @@
                     <?php endif; ?>
                   </ul>
                 </li>
+              <?php endif; ?>
             <li>
               <a href="#">
                 <i class="fa fa-plus-square"></i> <span>Ayuda</span>
@@ -223,8 +224,6 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
     <!-- AdminLTE App -->
-    
-
     <script src="<?php echo e(asset('js/app.min.js')); ?>"></script>
 
   </body>

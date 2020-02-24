@@ -24,11 +24,11 @@
             </div>
             <div class="form-group">
             	<label for="cabecera">Cabecera</label>
-            	<input type="text" name="cabecera" class="form-control" placeholder="Cabecera...">
+            	<textarea name="cabecera" rows="2" class="form-control" placeholder="Cabecera..."></textarea>
             </div>
             <div class="form-group">
-            	<label for="cuerpo">Cuerpo</label>
-            	<input type="text" name="cuerpo" class="form-control" placeholder="Cuerpo...">
+				<label for="cuerpo">Cuerpo</label>
+				<textarea name="cuerpo" rows="5" class="form-control" placeholder="Cuerpo..."></textarea>
             </div>
             <div class="form-group">
             	<label for="imagen">Imagen</label>

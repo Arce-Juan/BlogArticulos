@@ -38,7 +38,8 @@ class PrincipalController extends Controller
                 ->select('art.*', 'usu.name', 'ta.nombre')
                 ->where('art.activo', '=', '1')
                 ->orderBy('idArticulo', 'asc')
-                ->paginate(7);
+                ->get();
+                //->paginate(7);
             return view('blogArticulo.principal.index', ["articulos"=>$articulos]);
         }
     }

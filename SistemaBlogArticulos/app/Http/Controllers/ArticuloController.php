@@ -54,12 +54,9 @@ class ArticuloController extends Controller
                 ->join('TipoArticulo as ta', 'art.TipoArticulo_idTipoArticulo', '=', 'ta.idTipoArticulo')
                 ->select('art.*', 'usu.name as nickName', 'ta.nombre')
                 ->where('titulo', 'LIKE', '%'.$query.'%')
-                //->where('art.activo', '=', '1')
                 ->orderBy('idArticulo', 'asc')
                 ->paginate(7);
             }
-
-            
             return view('blogArticulo.articulo.index', ["articulos"=>$articulos, "searchText"=>$query]);
         }
     }
@@ -78,6 +75,8 @@ class ArticuloController extends Controller
         $articulo->titulo = $request->get('titulo');
         $articulo->cabecera = $request->get('cabecera');
         $articulo->cuerpo = $request->get('cuerpo');
+        //$articulo->cuerpo = str_replace("\r","<br>",$request->get('cuerpo'));
+        //$articulo->cuerpo = str_replace(array("\r\n", "\n\r", "\r", "\n"), "<br/>", $request->get('cuerpo'));
         if (Input::hasFile('imagen')) {
             $file = Input::file('imagen');
             $file->move(public_path().'imagenes/articulos/', $file->getClientOriginalName());
@@ -109,6 +108,7 @@ class ArticuloController extends Controller
         $articulo->titulo = $request->get('titulo');
         $articulo->cabecera = $request->get('cabecera');
         $articulo->cuerpo = $request->get('cuerpo');
+        //$articulo->cuerpo = str_replace("\r","<br>",$request->get('cuerpo'));
         $articulo->TipoArticulo_idTipoArticulo = $request->get('idTipoArticulo');
         $articulo->imagen = $request->get('imagen');
         if (Input::hasFile('imagen')) {
@@ -116,7 +116,7 @@ class ArticuloController extends Controller
             $file->move(public_path().'imagenes/articulos/', $file->getClientOriginalName());
             $articulo->imagen = $file->getClientOriginalName();
         }
-        $articulo->Usuario_idUsuario = auth()->user()->idUsers;
+        //$articulo->Usuario_idUsuario = auth()->user()->idUsers;
         $articulo->update();
         return Redirect::to('blogArticulo/articulo');
     }

@@ -24,9 +24,9 @@ class ArticuloFormRequest extends Request
     public function rules()
     {
         return [
-            'titulo' => 'required | max:40',
-            'cabecera' => 'required | max:100',
-            'cuerpo' => 'required | max:400',
+            'titulo' => 'required | max:100',
+            'cabecera' => 'required | max:300',
+            'cuerpo' => 'required | max:1000',
             'imagen' => 'mimes: jpg,jpeg,bmp,png',
             'idTipoArticulo' => 'required',
         ];
