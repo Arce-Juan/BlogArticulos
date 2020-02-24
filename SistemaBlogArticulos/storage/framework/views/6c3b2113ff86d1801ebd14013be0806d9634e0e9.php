@@ -136,12 +136,12 @@
                   </a>
                   <ul class="treeview-menu">
                     
-                    <?php if(in_array("gestionArticuloPersonal", $listPermisos)): ?>
+                    <?php if(in_array("gestionArticuloPersonal", $listPermisos) or in_array("gestionArticuloTodos", $listPermisos)): ?>
                       <li><a href="<?php echo e(url('/blogArticulo/articulo')); ?>"><i class="fa fa-newspaper-o"></i>Mis Articulos</a></li>
                     <?php endif; ?>
                     
                     <?php if(in_array("gestionUsuarioPersonal", $listPermisos)): ?>
-                      <li><a href="<?php echo e(url('/blogArticulo/perfil')); ?>"><i class="fa fa-male"></i>Perfil</a></li>
+                      <li><a href="<?php echo e(url('/blogArticulo/verPerfil')); ?>"><i class="fa fa-male"></i>Mi Perfil</a></li>
                     <?php endif; ?>
                     
                     <?php if(in_array("gestionUsuarioTodos", $listPermisos)): ?>

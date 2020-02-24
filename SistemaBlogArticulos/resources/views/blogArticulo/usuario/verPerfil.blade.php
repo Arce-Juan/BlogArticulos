@@ -40,7 +40,7 @@
                 <form method="POST" onsubmit="return validarPassword();" action="http://localhost:8000/blogArticulo/usuario/{{auth()->user()->idUsers}}" accept-charset="UTF-8" autocomplete="off" enctype="multipart/form-data">
                     <input name="_method" type="hidden" value="PATCH">
                     {{Form::token()}}
-                    <input type="hidden" name="_token" value="FBZEXXGc1ESSJCeCRQNgYDMsdahz78JVZtUYZjdI">
+                    
                     
                     
                     <div class="row">
